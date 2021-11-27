@@ -1,36 +1,14 @@
-<router-outlet></router-outlet>
-<div class="container-fluid header" style="background-image: url('../assets/slide3.jpg');">
-    <div class="headerkap"></div>
 
+
+<div class="container">
     <div class="row">
-
-        <div class="col-md-3 bg-danger h-75">
-            <div class="headersol">
-                <ul class="asd cl-effect-1">
-                    <li><a href="#gunluk">Günlük Görevler</a></li>
-                    <li><a href="#haftalik">Haftalık Görevler</a></li>
-                    <li><a href="#aylik">Aylık Görevler</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-9 bg-danger" style="height: 25vh;">
-            <div class="col-md-12 h-100 d-inline-block">
-                kjhjkhjk <br>
-
-            </div>
-
-            <div class="col-md-12 bg-warning" style="height: 75vh;">
-                
-            </div>
-
-        </div>
-
+      <div class="col-md-3">
+        <app-category></app-category>
+      </div>
+      <div class="col-md-9">
+        <app-gorevler></app-gorevler>
+        <router-outlet></router-outlet>
+      </div>
+  
     </div>
-
-
-</div>
-
-<div class="container-fluid bg-danger">
-    sdfsdf
-</div>
+  </div>
