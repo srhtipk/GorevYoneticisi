@@ -1,1 +1,11 @@
-<p>category works!</p>
+
+<div class="mt-5">
+<ul class="list-group">
+    <li (click)="setCurrentCategory(category)" *ngFor="let category of categories"
+    routerLink="/todos/category/{{category.categoryId}}"
+    [class]=getCurrentCategoryClass(category) class="list-group-item">
+      {{category.categoryName}}</li>
+  </ul>
+  
+  <h5 *ngIf="currentCategory">{{currentCategory.categoryName}} seçtiniz.</h5> 
+</div>

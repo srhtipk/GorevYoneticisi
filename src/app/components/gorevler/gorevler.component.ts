@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Todo } from 'src/app/models/todo';
 import { TodoService } from 'src/app/services/todo.service';
 
@@ -12,10 +13,16 @@ export class GorevlerComponent implements OnInit {
   dataLoaded:boolean=false;
   filterText:string="";
 
-  constructor(private todoService:TodoService) { }
+  constructor(private todoService:TodoService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getTodos();
+    this.activatedRoute.params.subscribe(params=>{
+      if (params["categoryId"]) {
+        this.getTodosByCategory(params["categoryId"])
+      }else{
+        this.getTodos()
+      }
+    })
   }
 
   getTodos(){
@@ -27,12 +34,13 @@ export class GorevlerComponent implements OnInit {
     })
   }
 
-  // getTodosByCategory(categoryId:number){
-  //   this.todoService.getTodosByCategory(categoryId).subscribe((response)=>{
-  //     this.todos=response.data;
-  //     //this.dataLoaded=true;
-  //     this.dataLoaded=response.success;
-  //   })
-  // }
+  getTodosByCategory(categoryId:number){
+    this.todoService.getTodosByCategory(categoryId).subscribe((response)=>{
+      this.todos=response.data;
+      console.log(response);
+      //this.dataLoaded=true;
+      this.dataLoaded=response.success;
+    })
+  }
 
 }

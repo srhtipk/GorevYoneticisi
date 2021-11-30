@@ -16,9 +16,9 @@ export class TodoService {
     return this.httpClient.get<TodoResponseModel>(newPath);
   }
 
-  // getTodosByCategory(categoryId:number):Observable<TodoResponseModel> {
-  //   let newPath= this.apiUrl+"todos/getbycategory?categoryId="+categoryId;
-  //   return this.httpClient.get<TodoResponseModel>(newPath);
-  // }
+  getTodosByCategory(categoryId:number):Observable<TodoResponseModel> {
+    let newPath= this.apiUrl+"todos/getallbycategoryid?id="+categoryId;
+    return this.httpClient.get<TodoResponseModel>(newPath);
+  }
 
 }
