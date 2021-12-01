@@ -1,27 +1,32 @@
-<div class="content">
-    <div class="container mb-5">
-        <div class="row col-md-12 mx-auto mt-5 shadow-lg p-4">
+   
+   
+   <div class="col-md-8 container mb-5 mx-auto">
+        <div class="d-inline-flex row col-md-12 mx-auto mt-5 shadow-lg p-4">
+            <h5>Yeni Görev Ekleme Alanı</h5>
             <form [formGroup]="todoAddForm">
-                <div class="col-md-6 overflow-hidden">
+                <div class="form-group mb-2">
                     <label for="todoName">Görev Adı:</label>
                     <input class="form-control" type="text" id="todoName" formControlName="todoName"
                         placeholder="Görev adı...">
                 </div>
-                <div class="col-md-2">
+                <div class="form-group mb-2">
                     <label for="categoryId">Kategori:</label>
                     <input class="form-control" type="number" id="categoryId" formControlName="categoryId"
                         placeholder="Kategori...">
                 </div>
-                <div class="col-md-2">
+                <!-- <div class="col-md-2">
                     <label for="isCompleted">Tamamlanma:</label>
                     <input class="form-control" type="text" id="isCompleted" formControlName="isCompleted"
                         placeholder="Tamamlanma...">
+                </div> -->
+                <div class="form-group mb-2">
+                    <input class="form-check-input" type="checkbox" id="isCompleted" formControlName="isCompleted">
+                    <label class="form-check-label ml-2" for="isCompleted">
+                         Tamamlandı
+                    </label>
                 </div>
-                <div class="col-md-2">
-                    <button (click)=add() class="btn btn-primary btn-block">Ekle</button>
-                </div>
+                <button (click)=add() class="btn btn-primary btn-block">Ekle</button>
             </form>
 
         </div>
     </div>
-</div>

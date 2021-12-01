@@ -43,4 +43,11 @@ export class GorevlerComponent implements OnInit {
     })
   }
 
+  delete(todo:Todo){
+    this.todoService.delete(todo).subscribe(response=>{
+      console.log(response.message);
+      window.location.reload();
+    })
+  }
+
 }

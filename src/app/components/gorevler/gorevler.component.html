@@ -1,5 +1,4 @@
-
-
+<app-todo-add-update></app-todo-add-update>
 <div *ngIf="!dataLoaded" class="spinner-border bg-dange" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
@@ -12,28 +11,26 @@
 <div *ngIf="filterText.length>=1" class="alert alert-warning">
     {{filterText}} içeren ürünler:
 </div> -->
-
-<table class="table table-striped table-hover">
-    <thead>
-        <td>Id:</td>
-        <td class="col-md-6">Name:</td>
-        <td>Category:</td>
-        <td>IsCompleted:</td>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let todo of todos">
-            <td>{{todo.todoId}}</td>
-            <td>{{todo.todoName | uppercase}}</td>
-            <td>{{todo.categoryId}}</td>
-            <td>{{todo.isCompleted}}</td>
-            <td>
-                <button class="btn btn-success">Güncelle</button>
-                <button class="btn btn-danger">Sil</button>            
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-
-
+<div class="col-md-12 mx-auto">
+    <table class="table table-striped table-hover">
+        <thead>
+            <td>Id:</td>
+            <td class="col-md-6">Name:</td>
+            <td>Category:</td>
+            <td>IsCompleted:</td>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todos">
+                <td>{{todo.todoId}}</td>
+                <td>{{todo.todoName | uppercase}}</td>
+                <td>{{todo.categoryId}}</td>
+                <td>{{todo.isCompleted}}</td>
+                <td>
+                    <button class="btn btn-success">Güncelle</button>
+                    <button (click)=delete(todo) class="btn btn-danger">Sil</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

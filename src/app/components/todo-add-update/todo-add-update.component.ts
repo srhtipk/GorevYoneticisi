@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-todo-add-update',
@@ -9,7 +10,10 @@ import { FormGroup, FormControl,FormBuilder,Validators } from '@angular/forms';
 export class TodoAddUpdateComponent implements OnInit {
   todoAddForm:FormGroup;
 
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(
+    private formBuilder:FormBuilder,
+    private todoService:TodoService
+    ) { }
 
   ngOnInit(): void {
     this.createtodoAddForm();
@@ -19,13 +23,22 @@ export class TodoAddUpdateComponent implements OnInit {
     this.todoAddForm=this.formBuilder.group({
       todoName:["",Validators.required],
       categoryId:["",Validators.required],
-      isCompleted:["",Validators.required]
-      
+      isCompleted:["false"]
     })
   }
 
   add(){
-    console.log("add çalıştı.");
+    if (this.todoAddForm.valid) {
+      let todoModel=Object.assign({},this.todoAddForm.value);
+      this.todoService.add(todoModel).subscribe(response=>{
+        console.log(response);
+      },responseError=>{
+        console.log(responseError);
+      });
+      //window.location.reload();
+    } else {
+      console.log("Hata");
+    }
   }
 
 }
